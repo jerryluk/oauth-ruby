@@ -169,14 +169,16 @@ module OAuth
         (h = headers.select { |hdr| hdr =~ /^OAuth / }).any? &&
         h.first =~ /oauth_problem/
 
-        # puts "Header: #{h.first}"
+        puts "OAuth::Header: #{h.first}"
 
         # TODO doesn't handle broken responses from api.login.yahoo.com
         # remove debug code when done
         params = OAuth::Helper.parse_header(h.first)
 
-        # puts "Params: #{params.inspect}"
-        # puts "Body: #{rsp.body}"
+        puts "OAuth::Params: #{params.inspect}"
+        puts "OAuth::Body: #{rsp.body}"
+        puts "OAuth::RequestHeader: #{req.headers.inspect}\n\n"
+        puts "\n\nOAuth::Request: #{req.inspect}\n\n\n"
 
         raise OAuth::Problem.new(params.delete("oauth_problem"), rsp, params)
       end
