@@ -177,7 +177,7 @@ module OAuth
 
         puts "OAuth::Params: #{params.inspect}"
         puts "OAuth::Body: #{rsp.body}"
-        puts "OAuth::RequestHeader: #{req.headers.inspect}\n\n"
+        # puts "OAuth::RequestHeader: #{req.headers.inspect}\n\n"
         puts "\n\nOAuth::Request: #{req.inspect}\n\n\n"
 
         raise OAuth::Problem.new(params.delete("oauth_problem"), rsp, params)
